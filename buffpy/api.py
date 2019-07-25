@@ -45,7 +45,7 @@ class API:
         response = self.session.get(url=BASE_URL.format(url))
 
         if response.ok:
-            return parser(response.content)
+            return parser(response.content.decode('utf-8'))
 
         self._handleResponseError(url, response, parser)
 
@@ -59,7 +59,7 @@ class API:
                                      **params)
 
         if response.ok:
-            return parser(response.content)
+            return parser(response.content.decode('utf-8'))
 
         self._handleResponseError(url, response, parser)
 

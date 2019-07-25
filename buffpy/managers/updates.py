@@ -104,7 +104,8 @@ class Updates(list):
 
     #TODO: Multiple profile posting
     def new(self, text: str, shorten: str = None, now: str = None,
-            top: str = None, media: str = None, when: str = None):
+            top: str = None, media: str = None, when: str = None,
+            photo: str = None):
         """
             Create one or more new status updates.
         """
@@ -132,6 +133,10 @@ class Updates(list):
             for media_type, media_item in list(media.items()):
                 quoted_media = quote(media_item.encode("utf-8"))
                 post_data.append(media_format.format(media_type, quoted_media))
+
+        if photo:
+            photo_format = "media[photo]=%s&" % photo
+            post_data.append(photo_format)
 
         response = self.api.post(url=url, data="".join(post_data))
         new_update = Update(api=self.api, raw_response=response["updates"][0])

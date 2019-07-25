@@ -54,4 +54,4 @@ class Profile(ResponseObject):
 
     @property
     def updates(self):
-        return Updates(api=self.api, profile_id=self.id)
+        return Updates(api=self.api, profile_id=self['id'])
