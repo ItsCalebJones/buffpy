@@ -4,7 +4,7 @@ from setuptools import setup
 requires_list = [
     "colorama==0.4.1",
     "rauth==0.7.3",
-    "requests>=2.25,<3",
+    "requests==2.25",
     "six",
 ]
 
